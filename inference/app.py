@@ -1,7 +1,3 @@
-"""
-Simple app to upload an image via a web form 
-and view the inference results on the image in the browser.
-"""
 import argparse
 import io
 import os
@@ -19,18 +15,17 @@ def predict():
     stream = cv2.VideoCapture('rtsp://127.0.0.1:8554/stream')  # Replace with your actual RTSP URL
     
     ret, frame = stream.read()
-    # if not ret:
-    #     break
-    # _, buffer = cv2.imencode('.jpg', frame)
     results = model([frame])
 
     results.render()  # updates results.imgs with boxes and labels
     results.save(save_dir="output_imgs/")
-    return redirect("static/image0.jpg")
+    n += 1
+    return f"output_imgs/image{n}.jpg"
 
 
 
 if __name__ == "__main__":
+    n=0
     parser = argparse.ArgumentParser(description="Flask app exposing yolov5 models")
     parser.add_argument("--port", default=5000, type=int, help="port number")
     args = parser.parse_args()
