@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  media_streamer:
+    image: aler9/rtsp-simple-server:v1.3.0
+    volumes:
+      - G:/RTSP_SURVEILLANCE_OBJECT_DETECTION/rtsp_camera/rtsp-simple-server.yml:/rtsp-simple-server.yml
+    ports:
+      - "8554:8554"
+
+  rtsp_stream:
+    image: jrottenberg/ffmpeg:4.4-alpine
+    volumes:
+      - G:\RTSP_SURVEILLANCE_OBJECT_DETECTION/rtsp_camera:/rtsp
+    depends_on:
+      - media_streamer
+    entrypoint: ffmpeg -re -stream_loop -1 -i /rtsp/video.mp4 -c copy -f rtsp -rtsp_transport tcp rtsp://media_streamer:8554/stream
+
+
+  inference_app:
+    build:
+      context: .
+      dockerfile: inference/Dockerfile
+    volumes:
+      - G:\RTSP_SURVEILLANCE_OBJECT_DETECTION/inference:/app
+    ports:
+        - "5000:5000"
+    
