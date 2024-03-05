@@ -5,6 +5,7 @@ from PIL import Image
 import cv2
 import torch
 from flask import Flask, render_template, request, redirect
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -16,20 +17,19 @@ def predict():
     
     ret, frame = stream.read()
     results = model([frame])
-
+ 
     results.render()  # updates results.imgs with boxes and labels
-    results.save(save_dir="output_imgs/")
-    n += 1
-    return f"output_imgs/image{n}.jpg"
+    results.save(save_dir=f"output_imgs")
+    return f"output_imgs"
 
 
 
 if __name__ == "__main__":
-    n=0
+ 
     parser = argparse.ArgumentParser(description="Flask app exposing yolov5 models")
     parser.add_argument("--port", default=5000, type=int, help="port number")
     args = parser.parse_args()
 
-    model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)  # force_reload = recache latest code
+    model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
     model.eval()
-    app.run(host="0.0.0.0", port=args.port)  # debug=True causes Restarting with stat
+    app.run(host="0.0.0.0", port=args.port, debug=True)  # debug=True causes Restarting with stat
