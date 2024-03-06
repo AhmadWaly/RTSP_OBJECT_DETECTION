@@ -11,19 +11,22 @@ RTSP Object Detection is a project that combines real-time streaming protocol (R
 - A python script that sends a request to the inference container and prints the path of the output image.
 ## Usage
 
-1. Clone the repository:
+1. Clone the repository :
 
     ```bash
     git clone https://github.com/AhmadWaly/RTSP_OBJECT_DETECTION.git
-    cd RTSP_OBJECT_DETECTION
     ```
 2. Make sure all the paths in the docker compose file are same path to the cloned repo
-3. Start all containers:
+3. Move to the cloned repository's path
+    ```bash
+    cd $PATH_TO_THE_REPO/RTSP_OBJECT_DETECTION
+    ```
+4. Start all containers:
 
     ```bash
     docker-compose up 
     ```
-4. Send a request to the Flask endpoint for object detection:
+5. Send a request to the Flask endpoint for object detection:
 open another terminal
     ```
     python3 ./client.py
