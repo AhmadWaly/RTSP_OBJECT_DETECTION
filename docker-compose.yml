@@ -7,7 +7,6 @@ services:
       - /rtsp_camera/:/rtsp
     ports:
       - "8554:8554"
-    entrypoint: cd rtsp
 
   # rtsp_stream:
   #   image: jrottenberg/ffmpeg:4.4-alpine
