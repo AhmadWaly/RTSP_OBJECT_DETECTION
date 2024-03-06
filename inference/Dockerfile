@@ -2,7 +2,7 @@
 FROM ultralytics/yolov5:latest-cpu
 
 # Set the working directory in the container
-WORKDIR /inference
+WORKDIR /app
 
 # # Copy the current directory contents into the container at /app
 COPY ./inference .
