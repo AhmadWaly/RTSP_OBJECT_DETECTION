@@ -18,8 +18,8 @@ RTSP Object Detection is a project that combines real-time streaming protocol (R
     git clone https://github.com/AhmadWaly/RTSP_OBJECT_DETECTION.git
     cd RTSP_OBJECT_DETECTION
     ```
-
-2. Start all containers:
+2. Make sure all the paths in the docker compose file are same path to the cloned repo
+3. Start all containers:
 
     ```bash
     docker-compose up 
@@ -27,7 +27,7 @@ RTSP Object Detection is a project that combines real-time streaming protocol (R
 4. Send a request to the Flask endpoint for object detection:
 open another terminal
     ```
-    python ./client.py
+    python3 ./client.py
     ```
 
 ## Directory Structure
@@ -46,7 +46,6 @@ RTSP_OBJECT_DETECTION/
 ├── docker-compose.yml
 ├── client.py
 ├── restaurant-system-design.drawio
-└── 
 ```
 
 ## Dependencies
