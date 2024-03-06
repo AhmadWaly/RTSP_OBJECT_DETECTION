@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9-slim
+FROM ultralytics/yolov5
 
 # Set the working directory in the container
 WORKDIR /inference
