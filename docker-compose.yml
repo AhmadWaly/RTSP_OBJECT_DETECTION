@@ -4,7 +4,7 @@ services:
   media_streamer:
     image: aler9/rtsp-simple-server:v1.3.0
     volumes:
-      - /rtsp_camera/rtsp-simple-server.yml:/rtsp-simple-server.yml
+      - /rtsp_camera/:/
     ports:
       - "8554:8554"
 
