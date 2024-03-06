@@ -9,7 +9,6 @@ RTSP Object Detection is a project that combines real-time streaming protocol (R
 - Performs real-time object detection on the RTSP stream using the YOLOv5 model.
 - Provides a Flask endpoint to receive requests for object detection and returns the path of the output image with detected objects.
 - A python script that sends a request to the inference container and prints the path of the output image.
-- 
 ## Usage
 
 1. Clone the repository:
