@@ -7,7 +7,6 @@ services:
       - /rtsp_camera/rtsp-simple-server.yml:/rtsp-simple-server.yml
     ports:
       - "8554:8554"
-    entrypoint: sleep infinity
 
   # rtsp_stream:
   #   image: jrottenberg/ffmpeg:4.4-alpine
