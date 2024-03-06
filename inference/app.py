@@ -12,9 +12,8 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def predict():
-    
-    stream = cv2.VideoCapture('rtsp://127.0.0.1:8554/stream')  # Replace with your actual RTSP URL
-    
+    rtsp_url = 'rtsp://media_streamer:8554/stream'
+    stream = cv2.VideoCapture( rtsp_url )  
     ret, frame = stream.read()
     results = model([frame])
  
@@ -32,4 +31,4 @@ if __name__ == "__main__":
 
     model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
     model.eval()
-    app.run(host="0.0.0.0", port=args.port, debug=True)  # debug=True causes Restarting with stat
+    app.run(host="0.0.0.0", port=args.port)  
