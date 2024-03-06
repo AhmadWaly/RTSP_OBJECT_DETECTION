@@ -25,5 +25,4 @@ services:
       - G:/github/RTSP_OBJECT_DETECTION/inference:/app
     ports:
       - "8000:5000"
-    # entrypoint: sleep infinity
     
